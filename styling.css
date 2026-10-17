@@ -1,92 +1,17 @@
-/* Grid proportions, breakpoints and unbound offsets are implementation values. */
+/* HOW TO READ THIS FILE
+   general.css contains page-wide defaults.
+   figma-tokens.css contains the colours, spacing and type values from Figma.
+   var(...) uses one of those named values; calc(...) calculates a size.
 
-/* HEADER: equal space on either side keeps the logo centred. */
-.menu { cursor: pointer; }
+   Each section starts with its desktop styles, followed by its smaller-screen
+   changes. @media rules apply only when their condition is true.
+   Layout measurements and breakpoints below are not Figma variables.
 
-/* Figma dropdown 381:3780. Positions below follow its 1440px canvas. */
-.navigation-menu {
-  position: fixed;
-  inset: 0;
-  box-sizing: border-box;
-  width: min(100%, 1440px);
-  max-width: 100%;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0 auto;
-  padding: 0;
-  border: 0;
-  overflow-y: auto;
-  background: var(--primitives-ivory-600);
-  color: #000;
-}
-.navigation-menu::backdrop { background: var(--primitives-ivory-600); }
-body:has(.navigation-menu[open]) { overflow: hidden; }
-.navigation-menu a { color: inherit; text-decoration: none; cursor: pointer; }
-.navigation-content { padding: 0 8.333333% 120px; }
-.navigation-close {
-  justify-self: start;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  width: 30px;
-  height: 32px;
-}
-.navigation-close img { width: 23.5375px; height: 22.6729px; object-fit: contain; }
-.navigation-columns {
-  display: grid;
-  grid-template-columns: 196fr 249fr 249fr;
-  gap: 138px;
-  margin: 0 0 0 15%;
-}
-.navigation-columns h2,
-.navigation-info {
-  margin: 0;
-  font-size: var(--type-headline-h2-size);
-  font-weight: var(--type-headline-h2-weight);
-  line-height: 1.2;
-}
-.navigation-columns ul { list-style: none; padding: 0; }
-.navigation-columns div ul {
-  display: grid;
-  gap: var(--style-tokens-spacing-xs);
-  margin: var(--style-tokens-spacing-xxs) 0 0;
-  font-size: var(--type-menu-link-size);
-  font-weight: var(--type-menu-link-weight);
-  line-height: 1.2;
-}
-.navigation-info { display: grid; gap: 31px; align-content: start; }
-.navigation-newsletter {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  width: 540px;
-  margin-top: 137px;
-  background: var(--primitives-ivory-500);
-}
-.navigation-photo { overflow: hidden; height: 240px; }
-.navigation-photo img { width: 106.86%; height: 100%; max-width: none; margin-left: -6.36%; }
-.navigation-newsletter-copy { padding: 60px 60px 0; }
-.navigation-newsletter h2 { margin: 0; font-size: var(--typography-font-size-s); font-weight: var(--typography-font-weight-semibold); }
-.navigation-newsletter p { margin: var(--style-tokens-spacing-xxs) 0 var(--style-tokens-spacing-s); font-size: var(--type-copy-regular-size); }
-.navigation-newsletter a { font-size: var(--type-link-size); font-weight: var(--type-link-weight); text-decoration: underline; }
-@media (max-width: 1199px) {
-  .navigation-columns { margin-left: 0; gap: 40px; grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 700px) {
-  .navigation-content { padding: 0 7.6923% 40px; }
-  .navigation-close { width: 16.127px; height: 18px; }
-  .navigation-close img { width: 16px; height: auto; }
-  .navigation-columns { margin-top: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px 20px; }
-  .navigation-columns h2, .navigation-info { font-size: var(--typography-font-size-s); }
-  .navigation-columns div ul { font-size: var(--typography-font-size-xs); }
-  .navigation-info { grid-column: 1 / -1; gap: 20px; }
-  .navigation-newsletter { margin-top: 50px; width: 100%; grid-template-columns: 1fr 1.5fr; }
-  .navigation-newsletter-copy { padding: 20px 15px; }
-  .navigation-newsletter h2 { font-size: var(--typography-font-size-xs); }
-  .navigation-photo { height: 100%; min-height: 240px; }
-}
+   Sections: header, dropdown, image corners, hero, entry notice,
+   category carousel, about/craft/retailers, newsletter, footer.
+*/
+
+/* ===== 1. Header ===== */
 
 .header {
   display: grid;
@@ -111,6 +36,7 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
 }
 
 .menu {
+  cursor: pointer;
   justify-self: start;
 }
 
@@ -139,6 +65,232 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
   object-fit: contain;
 }
 
+/* Keep the logo's appearance unchanged when focused. */
+.logo:focus-visible {
+  outline: none;
+}
+
+/* Mobile header: the page and dropdown share these same rules. */
+@media (max-width: 700px) {
+  .header {
+    height: calc(100vw * 90 / 390);
+    padding: 12px calc(100% / 13) 0;
+    grid-template-rows: 18px;
+  }
+
+  .menu,
+  .bag,
+  .header-icon {
+    width: 16.127px;
+  }
+
+  .menu,
+  .bag {
+    height: 18px;
+  }
+
+  .logo {
+    width: 192.515px;
+    height: 18px;
+  }
+}
+
+/* ===== 2. Dropdown menu ===== */
+
+/* Figma dropdown 381:3780. Positions below follow its 1440px canvas. */
+.navigation-menu {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: min(100%, 1440px);
+  max-width: 100%;
+  /* dvh follows the visible screen height, including mobile browser bars. */
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  overflow-y: auto;
+  background: var(--primitives-ivory-600);
+  color: #000;
+}
+
+.navigation-menu::backdrop {
+  background: var(--primitives-ivory-600);
+}
+
+/* Lock page scrolling while the dropdown is open. */
+body:has(.navigation-menu[open]) {
+  overflow: hidden;
+}
+
+.navigation-menu a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation-content {
+  padding: 0 8.333333% 120px;
+}
+
+.navigation-close {
+  justify-self: start;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 30px;
+  height: 32px;
+}
+
+.navigation-close img {
+  width: 23.5375px;
+  height: 22.6729px;
+  object-fit: contain;
+}
+
+.navigation-columns {
+  display: grid;
+  grid-template-columns: 196fr 249fr 249fr;
+  gap: 138px;
+  margin: 0 0 0 15%;
+}
+
+.navigation-columns h2,
+.navigation-info {
+  margin: 0;
+  font-size: var(--type-headline-h2-size);
+  font-weight: var(--type-headline-h2-weight);
+  line-height: 1.2;
+}
+
+.navigation-columns ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navigation-columns div ul {
+  display: grid;
+  gap: var(--style-tokens-spacing-xs);
+  margin: var(--style-tokens-spacing-xxs) 0 0;
+  font-size: var(--type-menu-link-size);
+  font-weight: var(--type-menu-link-weight);
+  line-height: 1.2;
+}
+
+.navigation-info {
+  display: grid;
+  gap: 31px;
+  align-content: start;
+}
+
+.navigation-newsletter {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  width: 540px;
+  margin-top: 137px;
+  background: var(--primitives-ivory-500);
+}
+
+.navigation-photo {
+  overflow: hidden;
+  height: 240px;
+}
+
+.navigation-photo img {
+  width: 106.86%;
+  height: 100%;
+  max-width: none;
+  margin-left: -6.36%;
+}
+
+.navigation-newsletter-copy {
+  padding: 60px 60px 0;
+}
+
+.navigation-newsletter h2 {
+  margin: 0;
+  font-size: var(--typography-font-size-s);
+  font-weight: var(--typography-font-weight-semibold);
+}
+
+.navigation-newsletter p {
+  margin: var(--style-tokens-spacing-xxs) 0 var(--style-tokens-spacing-s);
+  font-size: var(--type-copy-regular-size);
+}
+
+.navigation-newsletter a {
+  font-size: var(--type-link-size);
+  font-weight: var(--type-link-weight);
+  text-decoration: underline;
+}
+@media (max-width: 1199px) {
+  .navigation-columns {
+    margin-left: 0;
+    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .navigation-content {
+    padding: 0 7.6923% 40px;
+  }
+
+  .navigation-close {
+    width: 16.127px;
+    height: 18px;
+  }
+
+  .navigation-close img {
+    width: 16px;
+    height: auto;
+  }
+
+  .navigation-columns {
+    margin-top: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 20px;
+  }
+
+  .navigation-columns h2,
+  .navigation-info {
+    font-size: var(--typography-font-size-s);
+  }
+
+  .navigation-columns div ul {
+    font-size: var(--typography-font-size-xs);
+  }
+
+  .navigation-info {
+    grid-column: 1 / -1;
+    gap: 20px;
+  }
+
+  .navigation-newsletter {
+    margin-top: 50px;
+    width: 100%;
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .navigation-newsletter-copy {
+    padding: 20px 15px;
+  }
+
+  .navigation-newsletter h2 {
+    font-size: var(--typography-font-size-xs);
+  }
+
+  .navigation-photo {
+    height: 100%;
+    min-height: 240px;
+  }
+}
+
+/* ===== 3. Reusable image corners ===== */
+
 /* Reusable Figma corner detailing.
    Add image-frame plus image-frame--right, --diagonal, or --left
    to an image's container. Keep overflow visible so marks aren't clipped. */
@@ -164,7 +316,8 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
 
 /* Upper-right and lower-right corners (large photo). */
 .image-frame--right::before,
-.image-frame--diagonal::before {
+.image-frame--diagonal::before,
+.image-frame--top-right::before {
   bottom: 100%;
   left: calc(100% - var(--corner-stroke) / 2);
   border-left-width: var(--corner-stroke);
@@ -172,7 +325,9 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
   margin-bottom: calc(var(--corner-stroke) / -2);
 }
 
-.image-frame--right::after {
+.image-frame--right::after,
+.image-frame--bottom-right::after,
+.image-frame--reverse-diagonal::after {
   top: calc(100% - var(--corner-stroke) / 2);
   left: calc(100% - var(--corner-stroke) / 2);
   border-left-width: var(--corner-stroke);
@@ -181,7 +336,9 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
 
 /* Upper-left and lower-left corners (wide leather photo).
    The shop photo uses upper-right and lower-left corners. */
-.image-frame--left::before {
+.image-frame--left::before,
+.image-frame--top-left::before,
+.image-frame--reverse-diagonal::before {
   bottom: 100%;
   right: calc(100% - var(--corner-stroke) / 2);
   border-right-width: var(--corner-stroke);
@@ -197,39 +354,22 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
   border-top-width: var(--corner-stroke);
 }
 
-/* Desktop offsets measured from each photo crop in Figma.
-   These small adjustments are node positions, not design tokens. */
-@media (min-width: 701px) {
-  .hero-main::before {
-    left: calc(100% - 0.546875px - var(--corner-stroke) / 2);
-    margin-bottom: calc(-0.604492px - var(--corner-stroke) / 2);
-  }
+/* Hide the unused mark on wrappers that need only one corner. */
+.image-frame--bottom-right::before,
+.image-frame--top-left::after,
+.image-frame--top-right::after {
+  content: none;
+}
 
-  .hero-main::after {
-    left: calc(100% - 0.5625px - var(--corner-stroke) / 2);
-    top: calc(100% - 0.561523px - var(--corner-stroke) / 2);
-  }
-
-  .hero-shop::before {
-    left: calc(100% - 0.499756px - var(--corner-stroke) / 2);
-    margin-bottom: calc(-0.563477px - var(--corner-stroke) / 2);
-  }
-
-  .hero-shop::after {
-    right: calc(100% - 0.546875px - var(--corner-stroke) / 2);
-    top: calc(100% - 1.795898px - var(--corner-stroke) / 2);
-  }
-
-  .hero-leather::before {
-    right: calc(100% + 0.013672px - var(--corner-stroke) / 2);
-    margin-bottom: calc(-0.101562px - var(--corner-stroke) / 2);
-  }
-
-  .hero-leather::after {
-    right: calc(100% + 0.5px - var(--corner-stroke) / 2);
-    top: calc(100% - 0.411133px - var(--corner-stroke) / 2);
+/* Smaller corner marks on mobile. */
+@media (max-width: 700px) {
+  .image-frame {
+    --corner-size: 16px;
+    --corner-stroke: 1px;
   }
 }
+
+/* ===== 4. Hero ===== */
 
 /* HERO: 24 columns and 14 rows.
    At 1440px wide, each column and row measures 60px.
@@ -240,12 +380,14 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
 
 .hero-grid {
   display: grid;
+  /* 24 equal columns; minmax(0, ...) lets them shrink without overflow. */
   grid-template-columns: repeat(24, minmax(0, 1fr));
   grid-template-rows: repeat(14, calc(100cqw / 24));
   gap: 0;
 }
 
 .hero-main {
+  /* Start at grid line 1 and cover 10 columns. */
   grid-column: 1 / span 10;
   grid-row: 1 / span 12;
 }
@@ -302,32 +444,44 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
   }
 }
 
+/* Desktop offsets measured from each photo crop in Figma.
+   These small adjustments are node positions, not design tokens. */
+@media (min-width: 701px) {
+  .hero-main::before {
+    left: calc(100% - 0.546875px - var(--corner-stroke) / 2);
+    margin-bottom: calc(-0.604492px - var(--corner-stroke) / 2);
+  }
+
+  .hero-main::after {
+    left: calc(100% - 0.5625px - var(--corner-stroke) / 2);
+    top: calc(100% - 0.561523px - var(--corner-stroke) / 2);
+  }
+
+  .hero-shop::before {
+    left: calc(100% - 0.499756px - var(--corner-stroke) / 2);
+    margin-bottom: calc(-0.563477px - var(--corner-stroke) / 2);
+  }
+
+  .hero-shop::after {
+    right: calc(100% - 0.546875px - var(--corner-stroke) / 2);
+    top: calc(100% - 1.795898px - var(--corner-stroke) / 2);
+  }
+
+  .hero-leather::before {
+    right: calc(100% + 0.013672px - var(--corner-stroke) / 2);
+    margin-bottom: calc(-0.101562px - var(--corner-stroke) / 2);
+  }
+
+  .hero-leather::after {
+    right: calc(100% + 0.5px - var(--corner-stroke) / 2);
+    top: calc(100% - 0.411133px - var(--corner-stroke) / 2);
+  }
+}
+
 /* Mobile frame 581:1154: 390px wide.
    Thirteen 30px columns reproduce the measured image offsets.
    Mobile measurements below are node values, not additional Figma tokens. */
 @media (max-width: 700px) {
-  .header {
-    height: calc(100vw * 90 / 390);
-    padding: 12px calc(100% / 13) 0;
-    grid-template-rows: 18px;
-  }
-
-  .menu,
-  .bag,
-  .header-icon {
-    width: 16.127px;
-  }
-
-  .menu,
-  .bag {
-    height: 18px;
-  }
-
-  .logo {
-    width: 192.515px;
-    height: 18px;
-  }
-
   .hero-grid {
     grid-template-columns: repeat(13, minmax(0, 1fr));
     grid-template-rows: repeat(31, calc(100cqw / 13));
@@ -353,11 +507,9 @@ body:has(.navigation-menu[open]) { overflow: hidden; }
     grid-row: 26 / span 6;
   }
 
-  .image-frame {
-    --corner-size: 16px;
-    --corner-stroke: 1px;
-  }
 }
+
+/* ===== 5. School-project notice ===== */
 
 /* Entry notice: ivory, dark brown and square edges from the design system.
    Dialog dimensions and spacing composition are implementation choices. */
@@ -433,6 +585,8 @@ body.disclaimer-pending {
     padding: var(--style-tokens-spacing-s);
   }
 }
+
+/* ===== 6. Category carousel ===== */
 
 /* Category strip: all four tiles share the full desktop grid width. */
 .categories {
@@ -511,24 +665,7 @@ body.disclaimer-pending {
   }
 }
 
-/* Single-corner options for the reusable image wrapper. */
-.image-frame--bottom-right::before,
-.image-frame--top-left::after { content: none; }
-
-.image-frame--bottom-right::after {
-  top: calc(100% - var(--corner-stroke) / 2);
-  left: calc(100% - var(--corner-stroke) / 2);
-  border-left-width: var(--corner-stroke);
-  border-top-width: var(--corner-stroke);
-}
-
-.image-frame--top-left::before {
-  bottom: 100%;
-  right: calc(100% - var(--corner-stroke) / 2);
-  border-right-width: var(--corner-stroke);
-  border-bottom-width: var(--corner-stroke);
-  margin-bottom: calc(var(--corner-stroke) / -2);
-}
+/* ===== 7. About us, craftsmanship and retailers ===== */
 
 /* Desktop node 453:5230. The 164px section gap and row proportions
    are measured layout values; text uses the existing Figma tokens. */
@@ -540,13 +677,18 @@ body.disclaimer-pending {
   padding-bottom: var(--style-tokens-spacing-m);
 }
 
-.story-copy { min-width: 0; align-self: start; }
+.story-copy {
+  min-width: 0;
+  align-self: start;
+}
+
 .story-copy h2 {
   margin: 0 0 var(--style-tokens-spacing-xxs);
   font-size: var(--typography-font-size-m);
   font-weight: var(--typography-font-weight-semibold);
   line-height: 1.2;
 }
+
 .story-copy p {
   margin: 0;
   font-size: var(--typography-font-size-xs);
@@ -554,6 +696,7 @@ body.disclaimer-pending {
   line-height: 1.25;
   text-align: justify;
 }
+
 .story-link {
   display: inline-block;
   margin-top: var(--style-tokens-spacing-s);
@@ -562,14 +705,52 @@ body.disclaimer-pending {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.story-photo { min-width: 0; align-self: start; }
-.story-photo picture { display: block; width: 100%; height: 100%; }
-.story-about-copy { grid-column: 6 / span 8; grid-row: 1 / span 2; }
-.story-about-photo { grid-column: 1 / span 4; grid-row: 1 / span 2; aspect-ratio: 239 / 243; }
-.story-craft-copy { grid-column: 2 / span 8; grid-row: 4; }
-.story-craft-photo { grid-column: 18 / -1; grid-row: 2 / span 3; aspect-ratio: 419 / 490; }
-.story-retailers-copy { grid-column: 16 / span 5; grid-row: 6; align-self: end; }
-.story-retailers-photo { grid-column: 2 / span 13; grid-row: 6; aspect-ratio: 778 / 300; align-self: end; }
+
+.story-photo {
+  min-width: 0;
+  align-self: start;
+}
+
+.story-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.story-about-copy {
+  grid-column: 6 / span 8;
+  grid-row: 1 / span 2;
+}
+
+.story-about-photo {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+  aspect-ratio: 239 / 243;
+}
+
+.story-craft-copy {
+  grid-column: 2 / span 8;
+  grid-row: 4;
+}
+
+.story-craft-photo {
+  grid-column: 18 / -1;
+  grid-row: 2 / span 3;
+  aspect-ratio: 419 / 490;
+}
+
+.story-retailers-copy {
+  grid-column: 16 / span 5;
+  grid-row: 6;
+  align-self: end;
+}
+
+.story-retailers-photo {
+  grid-column: 2 / span 13;
+  grid-row: 6;
+  aspect-ratio: 778 / 300;
+  align-self: end;
+}
 
 /* Tablet adaptation: pair each photo with its copy in flexible rows.
    This breakpoint is an implementation choice between the Figma layouts. */
@@ -592,12 +773,35 @@ body.disclaimer-pending {
     line-height: 1.5;
   }
 
-  .story-about-photo { grid-column: 1 / span 5; grid-row: 1; }
-  .story-about-copy { grid-column: 7 / -1; grid-row: 1; }
-  .story-craft-copy { grid-column: 1 / span 6; grid-row: 2; }
-  .story-craft-photo { grid-column: 8 / -1; grid-row: 2; }
-  .story-retailers-photo { grid-column: 1 / span 6; grid-row: 3; }
-  .story-retailers-copy { grid-column: 8 / -1; grid-row: 3; }
+  .story-about-photo {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+  }
+
+  .story-about-copy {
+    grid-column: 7 / -1;
+    grid-row: 1;
+  }
+
+  .story-craft-copy {
+    grid-column: 1 / span 6;
+    grid-row: 2;
+  }
+
+  .story-craft-photo {
+    grid-column: 8 / -1;
+    grid-row: 2;
+  }
+
+  .story-retailers-photo {
+    grid-column: 1 / span 6;
+    grid-row: 3;
+  }
+
+  .story-retailers-copy {
+    grid-column: 8 / -1;
+    grid-row: 3;
+  }
 }
 
 /* Mobile node 597:1291. Content rows can grow when text wraps.
@@ -609,37 +813,48 @@ body.disclaimer-pending {
     row-gap: 50px;
     margin-top: var(--style-tokens-spacing-m);
   }
-  .story-copy, .story-photo { grid-row: auto; align-self: start; }
-  .story-about-copy { grid-column: 2 / span 11; min-height: 160px; }
-  .story-about-photo { grid-column: 1 / span 9; aspect-ratio: 1; }
-  .story-craft-copy { grid-column: 2 / span 11; min-height: 160px; margin-top: 40px; }
-  .story-craft-photo { grid-column: 3 / -1; aspect-ratio: 330 / 390; }
-  .story-retailers-copy { grid-column: 2 / span 10; min-height: 164px; margin-top: 42px; }
-  .story-retailers-photo { grid-column: 2 / span 11; aspect-ratio: 330 / 151; margin-top: var(--style-tokens-spacing-s); }
+
+  .story-copy,
+  .story-photo {
+    grid-row: auto;
+    align-self: start;
+  }
+
+  .story-about-copy {
+    grid-column: 2 / span 11;
+    min-height: 160px;
+  }
+
+  .story-about-photo {
+    grid-column: 1 / span 9;
+    aspect-ratio: 1;
+  }
+
+  .story-craft-copy {
+    grid-column: 2 / span 11;
+    min-height: 160px;
+    margin-top: 40px;
+  }
+
+  .story-craft-photo {
+    grid-column: 3 / -1;
+    aspect-ratio: 330 / 390;
+  }
+
+  .story-retailers-copy {
+    grid-column: 2 / span 10;
+    min-height: 164px;
+    margin-top: 42px;
+  }
+
+  .story-retailers-photo {
+    grid-column: 2 / span 11;
+    aspect-ratio: 330 / 151;
+    margin-top: var(--style-tokens-spacing-s);
+  }
 }
 
-/* Additional corner combinations reuse the same Figma size and colour tokens. */
-.image-frame--top-right::after { content: none; }
-.image-frame--top-right::before {
-  bottom: 100%;
-  left: calc(100% - var(--corner-stroke) / 2);
-  border-left-width: var(--corner-stroke);
-  border-bottom-width: var(--corner-stroke);
-  margin-bottom: calc(var(--corner-stroke) / -2);
-}
-.image-frame--reverse-diagonal::before {
-  bottom: 100%;
-  right: calc(100% - var(--corner-stroke) / 2);
-  border-right-width: var(--corner-stroke);
-  border-bottom-width: var(--corner-stroke);
-  margin-bottom: calc(var(--corner-stroke) / -2);
-}
-.image-frame--reverse-diagonal::after {
-  top: calc(100% - var(--corner-stroke) / 2);
-  left: calc(100% - var(--corner-stroke) / 2);
-  border-left-width: var(--corner-stroke);
-  border-top-width: var(--corner-stroke);
-}
+/* ===== 8. Newsletter ===== */
 
 /* Desktop newsletter composition, aligned to the page's 24-column grid.
    Row dimensions are layout measurements rather than exported tokens. */
@@ -650,34 +865,69 @@ body.disclaimer-pending {
   margin-top: var(--style-tokens-spacing-m);
   padding-bottom: var(--style-tokens-spacing-m);
 }
-.newsletter-photo { min-width: 0; align-self: start; }
-.newsletter-photo picture { display: block; width: 100%; height: 100%; }
-.newsletter-portrait { grid-column: 1 / span 6; grid-row: 1 / span 2; aspect-ratio: 374 / 480; }
-.newsletter-content { grid-column: 8 / span 8; grid-row: 1; min-width: 0; align-self: start; }
-.newsletter-walking { grid-column: 19 / -1; grid-row: 2 / span 4; aspect-ratio: 374 / 480; }
-.newsletter-detail { grid-column: 4 / span 6; grid-row: 4; aspect-ratio: 362 / 180; }
+
+.newsletter-photo {
+  min-width: 0;
+  align-self: start;
+}
+
+.newsletter-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.newsletter-portrait {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 2;
+  aspect-ratio: 374 / 480;
+}
+
+.newsletter-content {
+  grid-column: 8 / span 8;
+  grid-row: 1;
+  min-width: 0;
+  align-self: start;
+}
+
+.newsletter-walking {
+  grid-column: 19 / -1;
+  grid-row: 2 / span 4;
+  aspect-ratio: 374 / 480;
+}
+
+.newsletter-detail {
+  grid-column: 4 / span 6;
+  grid-row: 4;
+  aspect-ratio: 362 / 180;
+}
+
 .newsletter-content h2 {
   margin: 0 0 var(--style-tokens-spacing-xxs);
   font-size: var(--typography-font-size-m);
   font-weight: var(--typography-font-weight-semibold);
   line-height: 1.2;
 }
+
 .newsletter-intro {
   margin: 0;
   font-size: var(--typography-font-size-xs);
   line-height: 1.25;
 }
+
 .newsletter-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: calc(2 * var(--style-tokens-spacing-s));
 }
+
 .newsletter-form label {
   grid-column: 1 / -1;
   font-size: var(--typography-font-size-s);
   font-weight: var(--typography-font-weight-semibold);
   line-height: 1.2;
 }
+
 .newsletter-form input {
   grid-column: 1 / -1;
   min-width: 0;
@@ -691,10 +941,12 @@ body.disclaimer-pending {
   font: inherit;
   font-size: var(--typography-font-size-xs);
 }
+
 .newsletter-form input::placeholder {
   color: var(--primitives-grey-700);
   opacity: 1;
 }
+
 .newsletter-form button {
   grid-column: 2;
   min-height: 60px;
@@ -708,20 +960,32 @@ body.disclaimer-pending {
   font-weight: var(--type-button-text-small-weight);
   cursor: pointer;
 }
-.newsletter-form button:hover { background: var(--style-tokens-button-primary-hover); }
-.newsletter-form :is(input, button):focus-visible {
+
+.newsletter-form button:hover {
+  background: var(--style-tokens-button-primary-hover);
+}
+
+.newsletter-form input:focus-visible,
+.newsletter-form button:focus-visible {
   /* Keep the indicator inside each control, clear of its neighbours. */
   outline: var(--style-tokens-stroke-weight) solid currentColor;
   outline-offset: calc(-1 * (var(--style-tokens-stroke-weight) + var(--style-tokens-spacing-xxxs)));
 }
+
 .newsletter-status {
   grid-column: 1 / -1;
   margin: var(--style-tokens-spacing-xs) 0 0;
   font-size: var(--typography-font-size-xs);
   line-height: 1.5;
 }
-.newsletter-status:empty { margin: 0; }
-.newsletter-form noscript { grid-column: 1 / -1; }
+
+.newsletter-status:empty {
+  margin: 0;
+}
+
+.newsletter-form noscript {
+  grid-column: 1 / -1;
+}
 
 /* Tablet: keep the form readable beside the portrait. */
 @media (min-width: 701px) and (max-width: 1199px) {
@@ -732,9 +996,22 @@ body.disclaimer-pending {
     margin-top: var(--style-tokens-spacing-s);
     padding-inline: calc(2 * var(--style-tokens-spacing-s));
   }
-  .newsletter-portrait { grid-column: 1 / span 5; grid-row: 1; }
-  .newsletter-content { grid-column: 7 / -1; grid-row: 1; }
-  .newsletter-walking { grid-column: 8 / -1; grid-row: 2; }
+
+  .newsletter-portrait {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+  }
+
+  .newsletter-content {
+    grid-column: 7 / -1;
+    grid-row: 1;
+  }
+
+  .newsletter-walking {
+    grid-column: 8 / -1;
+    grid-row: 2;
+  }
+
   .newsletter-detail {
     grid-column: 2 / span 5;
     grid-row: 2;
@@ -752,12 +1029,33 @@ body.disclaimer-pending {
     row-gap: var(--style-tokens-spacing-m);
     margin-top: 0;
   }
-  .newsletter-photo, .newsletter-content { grid-row: auto; }
-  .newsletter-portrait { grid-column: 1 / span 8; aspect-ratio: 241 / 329; }
-  .newsletter-content { grid-column: 2 / span 11; }
-  .newsletter-walking { grid-column: 5 / -1; aspect-ratio: 274 / 351; }
-  .newsletter-detail { grid-column: 3 / span 8; aspect-ratio: 242 / 120; }
+
+  .newsletter-photo,
+  .newsletter-content {
+    grid-row: auto;
+  }
+
+  .newsletter-portrait {
+    grid-column: 1 / span 8;
+    aspect-ratio: 241 / 329;
+  }
+
+  .newsletter-content {
+    grid-column: 2 / span 11;
+  }
+
+  .newsletter-walking {
+    grid-column: 5 / -1;
+    aspect-ratio: 274 / 351;
+  }
+
+  .newsletter-detail {
+    grid-column: 3 / span 8;
+    aspect-ratio: 242 / 120;
+  }
 }
+
+/* ===== 9. Footer ===== */
 
 /* Footer: original Figma SVGs and palette; rows follow the desktop frame. */
 .footer {
@@ -769,14 +1067,28 @@ body.disclaimer-pending {
   font-size: var(--typography-font-size-xs);
   line-height: 1.25;
 }
+
 .footer h2 {
   margin: 0 0 var(--style-tokens-spacing-s);
   font-size: inherit;
   font-weight: var(--typography-font-weight-semibold);
 }
-.footer-contact { grid-column: 5 / span 5; grid-row: 2 / span 2; min-width: 0; }
-.footer-contact p { margin: 0; text-align: justify; }
-.footer-contact dl { margin: var(--style-tokens-spacing-s) 0 0; }
+
+.footer-contact {
+  grid-column: 5 / span 5;
+  grid-row: 2 / span 2;
+  min-width: 0;
+}
+
+.footer-contact p {
+  margin: 0;
+  text-align: justify;
+}
+
+.footer-contact dl {
+  margin: var(--style-tokens-spacing-s) 0 0;
+}
+
 .footer-contact dl div {
   display: flex;
   justify-content: space-between;
@@ -784,18 +1096,37 @@ body.disclaimer-pending {
   margin-top: var(--style-tokens-spacing-s);
   font-weight: var(--typography-font-weight-bold);
 }
-.footer-contact dd { margin: 0; overflow-wrap: anywhere; }
-.footer-nav { grid-column: 20 / span 3; grid-row: 3 / span 4; }
-.footer-nav ul { list-style: none; padding: 0; margin: 0; }
+
+.footer-contact dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.footer-nav {
+  grid-column: 20 / span 3;
+  grid-row: 3 / span 4;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .footer-nav a {
   font-weight: var(--typography-font-weight-bold);
   text-underline-offset: 2px;
 }
-.footer-nav a:hover { text-decoration-thickness: 2px; }
+
+.footer-nav a:hover {
+  text-decoration-thickness: 2px;
+}
+
 .footer-nav a:focus-visible {
   outline: var(--style-tokens-stroke-weight) solid currentColor;
   outline-offset: var(--style-tokens-spacing-xxxs);
 }
+
 .footer-brand {
   grid-column: 10 / span 6;
   grid-row: 4 / span 3;
@@ -804,9 +1135,23 @@ body.disclaimer-pending {
   align-items: center;
   gap: 43px;
 }
-.footer-logo { display: block; width: 358px; max-width: 100%; height: 35px; }
-.footer-emblem { display: block; width: 52px; height: 94px; }
-.footer-brand img { object-fit: contain; }
+
+.footer-logo {
+  display: block;
+  width: 358px;
+  max-width: 100%;
+  height: 35px;
+}
+
+.footer-emblem {
+  display: block;
+  width: 52px;
+  height: 94px;
+}
+
+.footer-brand img {
+  object-fit: contain;
+}
 
 /* Tablet: readable contact and navigation columns with branding below. */
 @media (min-width: 701px) and (max-width: 1199px) {
@@ -816,9 +1161,22 @@ body.disclaimer-pending {
     gap: var(--style-tokens-spacing-m);
     padding: var(--style-tokens-spacing-m) calc(2 * var(--style-tokens-spacing-s));
   }
-  .footer-contact { grid-column: 1; grid-row: 1; }
-  .footer-nav { grid-column: 2; grid-row: 1; justify-self: center; }
-  .footer-brand { grid-column: 1 / -1; grid-row: 2; }
+
+  .footer-contact {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .footer-nav {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 /* Mobile: contact, links, wordmark and emblem follow the Figma reading order. */
@@ -829,9 +1187,33 @@ body.disclaimer-pending {
     row-gap: calc(2 * var(--style-tokens-spacing-s));
     padding: 63px calc(100% / 13) 60px;
   }
-  .footer-contact { grid-column: 1; grid-row: auto; min-height: 240px; }
-  .footer-nav { grid-column: 1; grid-row: auto; min-height: 202px; }
-  .footer-brand { grid-column: 1; grid-row: auto; margin-top: 24px; gap: 30px; }
-  .footer-logo { width: 267px; height: 26px; }
-  .footer-emblem { width: 42px; height: 76px; }
+
+  .footer-contact {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 240px;
+  }
+
+  .footer-nav {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 202px;
+  }
+
+  .footer-brand {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 24px;
+    gap: 30px;
+  }
+
+  .footer-logo {
+    width: 267px;
+    height: 26px;
+  }
+
+  .footer-emblem {
+    width: 42px;
+    height: 76px;
+  }
 }
