@@ -338,3 +338,72 @@ body.disclaimer-pending {
     padding: var(--style-tokens-spacing-s);
   }
 }
+
+/* Category strip: all four tiles share the full desktop grid width. */
+.categories {
+  margin-top: var(--style-tokens-spacing-xxxl);
+}
+
+.category-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-card {
+  display: grid;
+  min-width: 0;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.category-card img {
+  min-width: 0;
+  min-height: 0;
+}
+
+.category-label {
+  position: absolute;
+  left: var(--style-tokens-spacing-xs);
+  bottom: var(--style-tokens-spacing-xs);
+  color: var(--style-tokens-text-color-secondary);
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-bold);
+  line-height: 1.25;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.categories:focus-visible {
+  outline: var(--style-tokens-stroke-weight) solid var(--style-tokens-text-color-default);
+  outline-offset: calc(-1 * var(--style-tokens-stroke-weight));
+}
+
+/* 1024px is an implementation breakpoint; mobile Figma tiles are 360px.
+   At 390px wide, 30px of the next tile remains visible. No JavaScript needed. */
+@media (max-width: 1023px) {
+  .categories {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+  }
+
+  .category-track {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(360px, calc(100% - 30px));
+  }
+
+  .category-card {
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .categories {
+    margin-top: var(--style-tokens-spacing-m);
+  }
+}
