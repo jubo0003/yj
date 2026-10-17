@@ -407,3 +407,81 @@ body.disclaimer-pending {
     margin-top: var(--style-tokens-spacing-m);
   }
 }
+
+/* Single-corner options for the reusable image wrapper. */
+.image-frame--bottom-right::before,
+.image-frame--top-left::after { content: none; }
+
+.image-frame--bottom-right::after {
+  top: calc(100% - var(--corner-stroke) / 2);
+  left: calc(100% - var(--corner-stroke) / 2);
+  border-left-width: var(--corner-stroke);
+  border-top-width: var(--corner-stroke);
+}
+
+.image-frame--top-left::before {
+  bottom: 100%;
+  right: calc(100% - var(--corner-stroke) / 2);
+  border-right-width: var(--corner-stroke);
+  border-bottom-width: var(--corner-stroke);
+  margin-bottom: calc(var(--corner-stroke) / -2);
+}
+
+/* Desktop node 453:5230. The 164px section gap and row proportions
+   are measured layout values; text uses the existing Figma tokens. */
+.story {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  grid-template-rows: 120px 123px 237px minmax(130px, auto) 112px minmax(300px, auto);
+  margin-top: 164px;
+  padding-bottom: var(--style-tokens-spacing-m);
+}
+
+.story-copy { min-width: 0; align-self: start; }
+.story-copy h2 {
+  margin: 0 0 var(--style-tokens-spacing-xxs);
+  font-size: var(--typography-font-size-m);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: 1.2;
+}
+.story-copy p {
+  margin: 0;
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-regular);
+  line-height: 1.25;
+  text-align: justify;
+}
+.story-link {
+  display: inline-block;
+  margin-top: var(--style-tokens-spacing-s);
+  font-size: var(--typography-font-size-xs);
+  font-weight: var(--typography-font-weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.story-photo { min-width: 0; align-self: start; }
+.story-photo picture { display: block; width: 100%; height: 100%; }
+.story-about-copy { grid-column: 6 / span 8; grid-row: 1 / span 2; }
+.story-about-photo { grid-column: 1 / span 4; grid-row: 1 / span 2; aspect-ratio: 239 / 243; }
+.story-craft-copy { grid-column: 2 / span 8; grid-row: 4; }
+.story-craft-photo { grid-column: 18 / -1; grid-row: 2 / span 3; aspect-ratio: 419 / 490; }
+.story-retailers-copy { grid-column: 16 / span 5; grid-row: 6; align-self: end; }
+.story-retailers-photo { grid-column: 2 / span 13; grid-row: 6; aspect-ratio: 778 / 300; align-self: end; }
+
+/* Mobile node 597:1291. Content rows can grow when text wraps.
+   At 390px the photo widths are 270px, 330px and 330px. */
+@media (max-width: 700px) {
+  .story {
+    grid-template-columns: repeat(13, minmax(0, 1fr));
+    grid-template-rows: auto;
+    row-gap: 50px;
+    margin-top: var(--style-tokens-spacing-m);
+  }
+  .story-copy, .story-photo { grid-row: auto; align-self: start; }
+  .story-about-copy { grid-column: 2 / span 11; min-height: 160px; }
+  .story-about-photo { grid-column: 1 / span 9; aspect-ratio: 1; }
+  .story-craft-copy { grid-column: 2 / span 11; min-height: 160px; margin-top: 40px; }
+  .story-craft-photo { grid-column: 3 / -1; aspect-ratio: 330 / 390; }
+  .story-retailers-copy { grid-column: 2 / span 10; min-height: 164px; margin-top: 42px; }
+  .story-retailers-photo { grid-column: 2 / span 11; aspect-ratio: 330 / 151; margin-top: var(--style-tokens-spacing-s); }
+}
