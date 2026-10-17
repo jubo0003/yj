@@ -468,6 +468,35 @@ body.disclaimer-pending {
 .story-retailers-copy { grid-column: 16 / span 5; grid-row: 6; align-self: end; }
 .story-retailers-photo { grid-column: 2 / span 13; grid-row: 6; aspect-ratio: 778 / 300; align-self: end; }
 
+/* Tablet adaptation: pair each photo with its copy in flexible rows.
+   This breakpoint is an implementation choice between the Figma layouts. */
+@media (min-width: 701px) and (max-width: 1199px) {
+  .story {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    row-gap: var(--style-tokens-spacing-m);
+    margin-top: var(--style-tokens-spacing-m);
+    padding-inline: calc(2 * var(--style-tokens-spacing-s));
+  }
+
+  .story-copy,
+  .story-photo {
+    align-self: center;
+  }
+
+  .story-copy p {
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .story-about-photo { grid-column: 1 / span 5; grid-row: 1; }
+  .story-about-copy { grid-column: 7 / -1; grid-row: 1; }
+  .story-craft-copy { grid-column: 1 / span 6; grid-row: 2; }
+  .story-craft-photo { grid-column: 8 / -1; grid-row: 2; }
+  .story-retailers-photo { grid-column: 1 / span 6; grid-row: 3; }
+  .story-retailers-copy { grid-column: 8 / -1; grid-row: 3; }
+}
+
 /* Mobile node 597:1291. Content rows can grow when text wraps.
    At 390px the photo widths are 270px, 330px and 330px. */
 @media (max-width: 700px) {
