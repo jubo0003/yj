@@ -1,0 +1,28 @@
+/* Basic settings shared by the whole page. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--primitives-ivory-500);
+  color: var(--style-tokens-text-color-default);
+  font-family: var(--typography-font-family-instrument-sans), Arial, sans-serif;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page {
+  max-width: 1440px;
+  margin-inline: auto;
+}

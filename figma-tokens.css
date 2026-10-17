@@ -1,0 +1,199 @@
+/* Exported from Figma Yori Jomo, 2026-10-17.
+   File: SqWU2i2Q8nCn5aBd4onWMA. Current default modes.
+   Aliases are preserved. Numeric variables here represent pixel dimensions.
+   Collection "Collection" is empty. Layout-only rules stay in styling.css. */
+:root {
+
+  /* Style tokens / Mode 1 */
+  /* Ears/Color | VariableID:369:3729 */
+  --style-tokens-ears-color: color-mix(in srgb, var(--primitives-darkbrown-500) 40%, transparent);
+  /* Ears/Length | VariableID:369:3731 */
+  --style-tokens-ears-length: 30px;
+  /* Stroke/Weight | VariableID:373:3733 */
+  --style-tokens-stroke-weight: 2px;
+  /* Icons/Length | VariableID:374:3734 */
+  --style-tokens-icons-length: 30px;
+  /* Icons/Color_Default | VariableID:374:3735 */
+  --style-tokens-icons-color-default: var(--primitives-darkbrown-500);
+  /* Text/Color_Default | VariableID:374:3736 */
+  --style-tokens-text-color-default: var(--primitives-darkbrown-500);
+  /* Text/Color_Secondary | VariableID:374:3737 */
+  --style-tokens-text-color-secondary: var(--primitives-ivory-500);
+  /* Text/Color_Tertiary | VariableID:374:3738 */
+  --style-tokens-text-color-tertiary: var(--primitives-earth-500);
+  /* Text/Color_Selection_Fill | VariableID:374:3739 */
+  --style-tokens-text-color-selection-fill: var(--primitives-olive-500);
+  /* Button/Primary_Default | VariableID:375:3741 */
+  --style-tokens-button-primary-default: var(--primitives-darkbrown-500);
+  /* Button/Text | VariableID:375:3742 */
+  --style-tokens-button-text: var(--primitives-ivory-500);
+  /* Button/Primary_Hover | VariableID:375:3743 */
+  --style-tokens-button-primary-hover: var(--primitives-darkbrown-400);
+  /* Spacing/XXS | VariableID:382:3934 */
+  --style-tokens-spacing-xxs: 10px;
+  /* Spacing/S | VariableID:382:3948 */
+  --style-tokens-spacing-s: 25px;
+  /* Spacing/XS | VariableID:392:4333 */
+  --style-tokens-spacing-xs: 15px;
+  /* Spacing/XL | VariableID:392:4445 */
+  --style-tokens-spacing-xl: 140px;
+  /* Spacing/XXXS | VariableID:392:5043 */
+  --style-tokens-spacing-xxxs: 5px;
+  /* Spacing/XXL | VariableID:453:5236 */
+  --style-tokens-spacing-xxl: 150px;
+  /* Spacing/XXXL | VariableID:453:5237 */
+  --style-tokens-spacing-xxxl: 180px;
+  /* Spacing/L | VariableID:453:5242 */
+  --style-tokens-spacing-l: 125px;
+  /* Spacing/M | VariableID:453:5243 */
+  --style-tokens-spacing-m: 90px;
+
+  /* Primitives / Mode 1 */
+  /* Grey/700 | VariableID:355:919 */
+  --primitives-grey-700: #898989;
+  /* Grey/600 | VariableID:355:920 */
+  --primitives-grey-600: #bbbbbb;
+  /* Grey/500 | VariableID:355:921 */
+  --primitives-grey-500: #f0f0f0;
+  /* Grey/400 | VariableID:355:922 */
+  --primitives-grey-400: #f3f3f3;
+  /* Grey/300 | VariableID:355:923 */
+  --primitives-grey-300: #f6f6f6;
+  /* Olive/800 | VariableID:355:924 */
+  --primitives-olive-800: #40391c;
+  /* Olive/700 | VariableID:355:925 */
+  --primitives-olive-700: #5c522b;
+  /* Olive/600 | VariableID:355:926 */
+  --primitives-olive-600: #7c6f3b;
+  /* Olive/!500 | VariableID:355:927 */
+  --primitives-olive-500: #bcad6b;
+  /* Olive/400 | VariableID:355:928 */
+  --primitives-olive-400: #b7a15a;
+  /* Olive/300 | VariableID:355:929 */
+  --primitives-olive-300: #ccb968;
+  /* Earth/800 | VariableID:355:930 */
+  --primitives-earth-800: #391414;
+  /* Earth/700 | VariableID:355:931 */
+  --primitives-earth-700: #4c201c;
+  /* Earth/600 | VariableID:355:932 */
+  --primitives-earth-600: #602926;
+  /* Earth/!500 | VariableID:355:933 */
+  --primitives-earth-500: #6c3732;
+  /* Earth/400 | VariableID:355:934 */
+  --primitives-earth-400: #a84e49;
+  /* Darkbrown/600 | VariableID:355:935 */
+  --primitives-darkbrown-600: #1e1614;
+  /* Darkbrown/!500 | VariableID:355:936 */
+  --primitives-darkbrown-500: #201917;
+  /* Darkbrown/400 | VariableID:355:937 */
+  --primitives-darkbrown-400: #503d3a;
+  /* Ivory/950 | VariableID:355:938 */
+  --primitives-ivory-950: #201917;
+  /* Ivory/900 | VariableID:355:939 */
+  --primitives-ivory-900: #6c564f;
+  /* Ivory/800 | VariableID:355:940 */
+  --primitives-ivory-800: #8f7268;
+  /* Ivory/700 | VariableID:355:941 */
+  --primitives-ivory-700: #ac9790;
+  /* Ivory/600 | VariableID:355:942 */
+  --primitives-ivory-600: #f2e5da;
+  /* Ivory/!500 | VariableID:355:943 */
+  --primitives-ivory-500: #fdf9f6;
+  /* Ivory/400 | VariableID:355:944 */
+  --primitives-ivory-400: #fdfbf9;
+
+  /* Collection / Mode 1 */
+
+  /* Typography / Mode 1 */
+  /* font/family/Instrument Sans | VariableID:423:722 */
+  --typography-font-family-instrument-sans: "Instrument Sans";
+  /* font/size/XS | VariableID:423:723 */
+  --typography-font-size-xs: 16px;
+  /* font/size/L | VariableID:423:724 */
+  --typography-font-size-l: 45px;
+  /* font/size/M | VariableID:423:725 */
+  --typography-font-size-m: 24px;
+  /* font/size/S | VariableID:423:726 */
+  --typography-font-size-s: 20px;
+  /* font/weight/SemiBold | VariableID:423:727 */
+  --typography-font-weight-semibold: 600;
+  /* font/weight/Regular | VariableID:423:728 */
+  --typography-font-weight-regular: 400;
+  /* font/weight/Bold | VariableID:423:792 */
+  --typography-font-weight-bold: 700;
+  /* font/weight/Medium | VariableID:423:798 */
+  --typography-font-weight-medium: 500;
+  --paint-personal-colors-julie: #c9d72e;
+  --paint-personal-colors-annebeth: #e2559e;
+  --paint-personal-colors-oskar: #36ba25;
+
+  /* Text style: Headline/H1 */
+  --type-headline-h1-family: var(--typography-font-family-instrument-sans);
+  --type-headline-h1-size: 45px;
+  --type-headline-h1-weight: 600;
+  --type-headline-h1-line-height: normal;
+  --type-headline-h1-letter-spacing: 0em;
+
+  /* Text style: Headline/H2 */
+  --type-headline-h2-family: var(--typography-font-family-instrument-sans);
+  --type-headline-h2-size: 24px;
+  --type-headline-h2-weight: 600;
+  --type-headline-h2-line-height: normal;
+  --type-headline-h2-letter-spacing: 0em;
+
+  /* Text style: Copy/Regular */
+  --type-copy-regular-family: var(--typography-font-family-instrument-sans);
+  --type-copy-regular-size: 16px;
+  --type-copy-regular-weight: 400;
+  --type-copy-regular-line-height: normal;
+  --type-copy-regular-letter-spacing: 0em;
+
+  /* Text style: Link */
+  --type-link-family: var(--typography-font-family-instrument-sans);
+  --type-link-size: 16px;
+  --type-link-weight: 600;
+  --type-link-line-height: normal;
+  --type-link-letter-spacing: 0em;
+
+  /* Text style: Headline/H3 */
+  --type-headline-h3-family: var(--typography-font-family-instrument-sans);
+  --type-headline-h3-size: 16px;
+  --type-headline-h3-weight: 600;
+  --type-headline-h3-line-height: normal;
+  --type-headline-h3-letter-spacing: 0em;
+
+  /* Text style: Form/Label */
+  --type-form-label-family: var(--typography-font-family-instrument-sans);
+  --type-form-label-size: 20px;
+  --type-form-label-weight: 600;
+  --type-form-label-line-height: normal;
+  --type-form-label-letter-spacing: 0em;
+
+  /* Text style: Form/Placeholder */
+  --type-form-placeholder-family: var(--typography-font-family-instrument-sans);
+  --type-form-placeholder-size: 16px;
+  --type-form-placeholder-weight: 600;
+  --type-form-placeholder-line-height: normal;
+  --type-form-placeholder-letter-spacing: 0em;
+
+  /* Text style: Button/Text_Big */
+  --type-button-text-big-family: var(--typography-font-family-instrument-sans);
+  --type-button-text-big-size: 20px;
+  --type-button-text-big-weight: 700;
+  --type-button-text-big-line-height: normal;
+  --type-button-text-big-letter-spacing: 0em;
+
+  /* Text style: Button/Text_Small */
+  --type-button-text-small-family: var(--typography-font-family-instrument-sans);
+  --type-button-text-small-size: 16px;
+  --type-button-text-small-weight: 700;
+  --type-button-text-small-line-height: normal;
+  --type-button-text-small-letter-spacing: 0em;
+
+  /* Text style: Menu/Link */
+  --type-menu-link-family: var(--typography-font-family-instrument-sans);
+  --type-menu-link-size: 20px;
+  --type-menu-link-weight: 500;
+  --type-menu-link-line-height: normal;
+  --type-menu-link-letter-spacing: 0em;
+}
