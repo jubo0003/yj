@@ -24,7 +24,7 @@
     <div class="page">
       <!-- Header: menu, centred logo, and shopping bag. -->
       <header class="header">
-        <button class="menu" type="button" aria-label="Menu" disabled>
+        <button class="menu" type="button" aria-label="Menu" aria-controls="navigation-menu" aria-expanded="false">
           <img class="header-icon" src="images/menu.svg" alt="" />
         </button>
         <a class="logo" href="index.html" aria-label="Yori Jomo home">
@@ -38,6 +38,55 @@
         </button>
       </header>
 
+      <dialog id="navigation-menu" class="navigation-menu" aria-label="Main navigation">
+        <div class="header navigation-header">
+          <button class="navigation-close" type="button" aria-label="Close menu" autofocus><img src="images/menu-close.svg" alt="" /></button>
+          <a class="logo" href="index.html" aria-label="Yori Jomo home">
+            <picture>
+              <source media="(max-width: 700px)" srcset="images/logo-mobile.svg" />
+              <img src="images/logo.svg" alt="YORI JOMO" />
+            </picture>
+          </a>
+          <button class="bag" type="button" aria-label="Shopping bag" disabled>
+            <img class="header-icon" src="images/shopping-bag.svg" alt="" />
+          </button>
+        </div>
+        <div class="navigation-content">
+        <nav class="navigation-columns" aria-label="Browse Yori Jomo">
+          <div>
+            <h2><a href="#shop">FOOTWEAR</a></h2>
+            <ul>
+              <li><a href="#ballerinas">Ballerinas</a></li>
+              <li><a href="#shop">Loafers</a></li>
+              <li><a href="#mary-janes">Mary janes</a></li>
+              <li><a href="#sandals">Sandals</a></li>
+              <li><a href="#shop">Boots</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2><a href="#accessories">ACCESSORIES</a></h2>
+            <ul>
+              <li><a href="#accessories">Belts</a></li>
+              <li><a href="#accessories">Bags</a></li>
+            </ul>
+          </div>
+          <ul class="navigation-info">
+            <li><a href="#about-us">ABOUT US</a></li>
+            <li><a href="#retailers">RETAILERS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+          </ul>
+        </nav>
+        <div class="navigation-newsletter">
+          <div class="navigation-photo"><img src="images/menu-newsletter.webp" alt="Woven shoes showing the upper and leather sole" /></div>
+          <div class="navigation-newsletter-copy">
+            <h2>NEVER MISS A THING</h2>
+            <p>Sign up to our mailing list and get exclusive deals and early access to new products.</p>
+            <a href="#newsletter">Learn more</a>
+          </div>
+        </div>
+        </div>
+      </dialog>
+
       <main>
         <!-- Cropped photographs exported from Figma and converted to WebP. -->
         <section class="hero" aria-label="Explore Yori Jomo">
@@ -47,41 +96,41 @@
                 <source media="(max-width: 700px)" srcset="images/hero-main-mobile.webp" />
                 <img src="images/hero-main.webp" alt="Brown leather shoes worn with black trousers" />
               </picture>
-              <span class="hero-label">something new</span>
+              <a class="hero-label" href="#shop">something new</a>
             </div>
             <div class="hero-shop hero-card image-frame image-frame--diagonal">
               <picture>
                 <source media="(max-width: 700px)" srcset="images/hero-shop-mobile.webp" />
                 <img src="images/hero-shop.webp" alt="Black Mary Jane shoes with socks and striped trousers" />
               </picture>
-              <span class="hero-label">shop</span>
+              <a class="hero-label" href="#shop">shop</a>
             </div>
             <div class="hero-leather hero-card image-frame image-frame--left">
               <picture>
                 <source media="(max-width: 700px)" srcset="images/hero-leather-mobile.webp" />
                 <img src="images/hero-leather.webp" alt="Close-up of olive leather and woven detailing" />
               </picture>
-              <span class="hero-label">about us</span>
+              <a class="hero-label" href="#about-us">about us</a>
             </div>
           </div>
         </section>
 
         <!-- Four columns on desktop; native horizontal scrolling on smaller screens. -->
-        <section class="categories" aria-label="Product categories — scroll horizontally on smaller screens" tabindex="0">
+        <section id="shop" class="categories" aria-label="Product categories — scroll horizontally on smaller screens" tabindex="0">
           <ul class="category-track">
-            <li class="category-card">
+            <li id="sandals" class="category-card">
               <img src="images/category-sandals.webp" alt="A woven gold leather sandal on a dark brown background" width="720" height="720" loading="lazy" />
               <span class="category-label">sandals</span>
             </li>
-            <li class="category-card">
+            <li id="accessories" class="category-card">
               <img src="images/category-accessories.webp" alt="A black leather shoulder bag on an olive background" width="720" height="720" loading="lazy" />
               <span class="category-label">accessories</span>
             </li>
-            <li class="category-card">
+            <li id="mary-janes" class="category-card">
               <img src="images/category-mary-janes.webp" alt="Striped Mary Jane shoes on a terrazzo floor" width="720" height="720" loading="lazy" />
               <span class="category-label">mary-Janes</span>
             </li>
-            <li class="category-card">
+            <li id="ballerinas" class="category-card">
               <img src="images/category-ballerinas.webp" alt="Black leather ballerinas worn with dark jeans" width="720" height="720" loading="lazy" />
               <span class="category-label">ballerinas</span>
             </li>
@@ -89,7 +138,7 @@
         </section>
 
         <!-- Reading order follows mobile; desktop uses the shared 24-column grid. -->
-        <section class="story" aria-label="About Yori Jomo">
+        <section id="about-us" class="story" aria-label="About Yori Jomo">
           <div class="story-copy story-about-copy">
             <h2>ABOUT US</h2>
             <p>Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
@@ -110,7 +159,7 @@
               <img src="images/story-craft.webp" alt="A woman seated beside a window" loading="lazy" />
             </picture>
           </div>
-          <div class="story-copy story-retailers-copy">
+          <div id="retailers" class="story-copy story-retailers-copy">
             <h2>RETAILERS</h2>
             <p>Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.</p>
             <!-- Add the retailer page URL when it is available. -->
@@ -124,7 +173,7 @@
           </div>
         </section>
 
-        <section class="newsletter" aria-labelledby="newsletter-title">
+        <section id="newsletter" class="newsletter" aria-labelledby="newsletter-title">
           <div class="newsletter-photo newsletter-portrait image-frame image-frame--top-right">
             <picture>
               <source media="(max-width: 700px)" srcset="images/newsletter-portrait-mobile.webp" />
@@ -157,8 +206,44 @@
           </div>
         </section>
       </main>
+
+      <footer id="contact" class="footer">
+        <div class="footer-contact">
+          <h2>CONTACT</h2>
+          <p>If you are interested in contacting us regarding something idk. then maybe you should think about just reaching out.. maybe just call, I mean our number is literally right here:</p>
+          <!-- Placeholder contact details reproduced from the school-project design. -->
+          <dl>
+            <div><dt>TLF:</dt><dd>13243546</dd></div>
+            <div><dt>MAIL:</dt><dd>something@mail.dk</dd></div>
+          </dl>
+        </div>
+        <nav class="footer-nav" aria-labelledby="footer-links-title">
+          <h2 id="footer-links-title">ALL LINKS</h2>
+          <ul>
+            <li><a href="#shop">shop</a></li>
+            <li><a href="#newsletter">newsletter</a></li>
+            <li><a href="#about-us">about us</a></li>
+            <li><a href="#sandals">slags 1</a></li>
+            <li><a href="#accessories">slags 2</a></li>
+            <li><a href="#mary-janes">slags 3</a></li>
+            <li><a href="#ballerinas">slags 4</a></li>
+          </ul>
+        </nav>
+        <div class="footer-brand">
+          <picture class="footer-logo">
+            <source media="(max-width: 700px)" srcset="images/footer-logo-mobile.svg" />
+            <img src="images/footer-logo.svg" alt="YORI JOMO" />
+          </picture>
+          <picture class="footer-emblem">
+            <source media="(max-width: 700px)" srcset="images/footer-emblem-mobile.svg" />
+            <img src="images/footer-emblem.svg" alt="" />
+          </picture>
+        </div>
+      </footer>
+
     </div>
     <script src="disclaimer.js"></script>
     <script src="newsletter.js"></script>
+    <script src="navigation.js"></script>
   </body>
 </html>

@@ -3,6 +3,13 @@
   box-sizing: border-box;
 }
 
+/* Animate section links unless the visitor prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   background: var(--primitives-ivory-500);
@@ -13,6 +20,16 @@ body {
 button,
 a {
   color: inherit;
+}
+
+/* Show focus when the browser determines a visible indicator is needed. */
+:focus-visible {
+  outline: var(--style-tokens-stroke-weight) solid currentColor;
+  outline-offset: var(--style-tokens-spacing-xxxs);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 img {
