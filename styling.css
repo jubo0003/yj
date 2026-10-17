@@ -514,3 +514,144 @@ body.disclaimer-pending {
   .story-retailers-copy { grid-column: 2 / span 10; min-height: 164px; margin-top: 42px; }
   .story-retailers-photo { grid-column: 2 / span 11; aspect-ratio: 330 / 151; margin-top: var(--style-tokens-spacing-s); }
 }
+
+/* Additional corner combinations reuse the same Figma size and colour tokens. */
+.image-frame--top-right::after { content: none; }
+.image-frame--top-right::before {
+  bottom: 100%;
+  left: calc(100% - var(--corner-stroke) / 2);
+  border-left-width: var(--corner-stroke);
+  border-bottom-width: var(--corner-stroke);
+  margin-bottom: calc(var(--corner-stroke) / -2);
+}
+.image-frame--reverse-diagonal::before {
+  bottom: 100%;
+  right: calc(100% - var(--corner-stroke) / 2);
+  border-right-width: var(--corner-stroke);
+  border-bottom-width: var(--corner-stroke);
+  margin-bottom: calc(var(--corner-stroke) / -2);
+}
+.image-frame--reverse-diagonal::after {
+  top: calc(100% - var(--corner-stroke) / 2);
+  left: calc(100% - var(--corner-stroke) / 2);
+  border-left-width: var(--corner-stroke);
+  border-top-width: var(--corner-stroke);
+}
+
+/* Desktop newsletter composition, aligned to the page's 24-column grid.
+   Row dimensions are layout measurements rather than exported tokens. */
+.newsletter {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  grid-template-rows: minmax(420px, auto) 60px 180px 180px 60px;
+  margin-top: var(--style-tokens-spacing-m);
+  padding-bottom: var(--style-tokens-spacing-m);
+}
+.newsletter-photo { min-width: 0; align-self: start; }
+.newsletter-photo picture { display: block; width: 100%; height: 100%; }
+.newsletter-portrait { grid-column: 1 / span 6; grid-row: 1 / span 2; aspect-ratio: 374 / 480; }
+.newsletter-content { grid-column: 8 / span 8; grid-row: 1; min-width: 0; align-self: start; }
+.newsletter-walking { grid-column: 19 / -1; grid-row: 2 / span 4; aspect-ratio: 374 / 480; }
+.newsletter-detail { grid-column: 4 / span 6; grid-row: 4; aspect-ratio: 362 / 180; }
+.newsletter-content h2 {
+  margin: 0 0 var(--style-tokens-spacing-xxs);
+  font-size: var(--typography-font-size-m);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: 1.2;
+}
+.newsletter-intro {
+  margin: 0;
+  font-size: var(--typography-font-size-xs);
+  line-height: 1.25;
+}
+.newsletter-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: calc(2 * var(--style-tokens-spacing-s));
+}
+.newsletter-form label {
+  grid-column: 1 / -1;
+  font-size: var(--typography-font-size-s);
+  font-weight: var(--typography-font-weight-semibold);
+  line-height: 1.2;
+}
+.newsletter-form input {
+  grid-column: 1 / -1;
+  min-width: 0;
+  width: 100%;
+  height: 60px;
+  padding: var(--style-tokens-spacing-xs);
+  border: var(--style-tokens-stroke-weight) solid var(--style-tokens-ears-color);
+  border-radius: 0;
+  background: var(--primitives-ivory-500);
+  color: var(--style-tokens-text-color-default);
+  font: inherit;
+  font-size: var(--typography-font-size-xs);
+}
+.newsletter-form input::placeholder {
+  color: var(--primitives-grey-700);
+  opacity: 1;
+}
+.newsletter-form button {
+  grid-column: 2;
+  min-height: 60px;
+  padding: var(--style-tokens-spacing-xs);
+  border: 0;
+  border-radius: 0;
+  background: var(--style-tokens-button-primary-default);
+  color: var(--style-tokens-button-text);
+  font: inherit;
+  font-size: var(--type-button-text-small-size);
+  font-weight: var(--type-button-text-small-weight);
+  cursor: pointer;
+}
+.newsletter-form button:hover { background: var(--style-tokens-button-primary-hover); }
+.newsletter-form :is(input, button):focus-visible {
+  outline: var(--style-tokens-stroke-weight) solid var(--style-tokens-text-color-default);
+  outline-offset: var(--style-tokens-spacing-xxxs);
+  z-index: 1;
+}
+.newsletter-status {
+  grid-column: 1 / -1;
+  margin: var(--style-tokens-spacing-xs) 0 0;
+  font-size: var(--typography-font-size-xs);
+  line-height: 1.5;
+}
+.newsletter-status:empty { margin: 0; }
+.newsletter-form noscript { grid-column: 1 / -1; }
+
+/* Tablet: keep the form readable beside the portrait. */
+@media (min-width: 701px) and (max-width: 1199px) {
+  .newsletter {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    row-gap: var(--style-tokens-spacing-m);
+    margin-top: var(--style-tokens-spacing-s);
+    padding-inline: calc(2 * var(--style-tokens-spacing-s));
+  }
+  .newsletter-portrait { grid-column: 1 / span 5; grid-row: 1; }
+  .newsletter-content { grid-column: 7 / -1; grid-row: 1; }
+  .newsletter-walking { grid-column: 8 / -1; grid-row: 2; }
+  .newsletter-detail {
+    grid-column: 2 / span 5;
+    grid-row: 2;
+    align-self: end;
+    /* Leave room for both 30px corner marks across the shared gutter. */
+    margin-inline-end: var(--style-tokens-spacing-s);
+  }
+}
+
+/* Mobile: portrait, form, walking photo, then leather detail. */
+@media (max-width: 700px) {
+  .newsletter {
+    grid-template-columns: repeat(13, minmax(0, 1fr));
+    grid-template-rows: auto;
+    row-gap: var(--style-tokens-spacing-m);
+    margin-top: 0;
+  }
+  .newsletter-photo, .newsletter-content { grid-row: auto; }
+  .newsletter-portrait { grid-column: 1 / span 8; aspect-ratio: 241 / 329; }
+  .newsletter-content { grid-column: 2 / span 11; }
+  .newsletter-walking { grid-column: 5 / -1; aspect-ratio: 274 / 351; }
+  .newsletter-detail { grid-column: 3 / span 8; aspect-ratio: 242 / 120; }
+}

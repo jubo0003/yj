@@ -123,8 +123,42 @@
             </picture>
           </div>
         </section>
+
+        <section class="newsletter" aria-labelledby="newsletter-title">
+          <div class="newsletter-photo newsletter-portrait image-frame image-frame--top-right">
+            <picture>
+              <source media="(max-width: 700px)" srcset="images/newsletter-portrait-mobile.webp" />
+              <img src="images/newsletter-portrait.webp" alt="A person in a grey sweater holding brown leather shoes over their shoulder" loading="lazy" />
+            </picture>
+          </div>
+          <div class="newsletter-content">
+            <h2 id="newsletter-title">JOIN OUR NEWSLETTER</h2>
+            <p class="newsletter-intro">We send you all kinds of stuff and its very exclusive and nice and well made and also its italian, did i mention its italian, very nice good leather and very exclusive. good quality and go sending we send you stuff wow nice picture to the right.</p>
+            <form class="newsletter-form">
+              <label for="newsletter-email">E-mail address:</label>
+              <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Your mail here" required />
+              <!-- Enabled by the demo handler; no email is sent or stored. -->
+              <button type="submit" disabled>sign up</button>
+              <p class="newsletter-status" role="status" aria-live="polite"></p>
+              <noscript><p>Enable JavaScript to try this school-project demo form. No subscriptions are collected.</p></noscript>
+            </form>
+          </div>
+          <div class="newsletter-photo newsletter-walking image-frame image-frame--left">
+            <picture>
+              <source media="(max-width: 700px)" srcset="images/newsletter-walking-mobile.webp" />
+              <img src="images/newsletter-walking.webp" alt="Striped shoes and blue jeans on a marked pavement" loading="lazy" />
+            </picture>
+          </div>
+          <div class="newsletter-photo newsletter-detail image-frame image-frame--reverse-diagonal">
+            <picture>
+              <source media="(max-width: 700px)" srcset="images/newsletter-detail-mobile.webp" />
+              <img src="images/newsletter-detail.webp" alt="Close-up of smooth and textured black leather" loading="lazy" />
+            </picture>
+          </div>
+        </section>
       </main>
     </div>
     <script src="disclaimer.js"></script>
+    <script src="newsletter.js"></script>
   </body>
 </html>
