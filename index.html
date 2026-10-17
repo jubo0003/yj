@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YORI JOMO - Handmade Leather Goods</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" />
@@ -9,7 +10,17 @@
     <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="styling.css" />
   </head>
-  <body>
+  <body class="disclaimer-pending">
+    <!-- Visitors must acknowledge this notice before entering the page. -->
+    <dialog class="disclaimer" aria-labelledby="disclaimer-title" aria-describedby="disclaimer-message">
+      <p class="disclaimer-eyebrow">PLEASE NOTE</p>
+      <h1 id="disclaimer-title">School project</h1>
+      <p id="disclaimer-message">This is a school project and has no affiliation with the brand Yori Jomo</p>
+      <form method="dialog">
+        <button class="disclaimer-button" type="submit" autofocus>I understand — enter site</button>
+      </form>
+    </dialog>
+    <noscript><p class="disclaimer-noscript">This is a school project and has no affiliation with the brand Yori Jomo. Please enable JavaScript to dismiss this notice and view the site.</p></noscript>
     <div class="page">
       <!-- Header: menu, centred logo, and shopping bag. -->
       <header class="header">
@@ -56,5 +67,6 @@
         </section>
       </main>
     </div>
+    <script src="disclaimer.js"></script>
   </body>
 </html>

@@ -263,3 +263,78 @@
     --corner-stroke: 1px;
   }
 }
+
+/* Entry notice: ivory, dark brown and square edges from the design system.
+   Dialog dimensions and spacing composition are implementation choices. */
+body.disclaimer-pending {
+  overflow: hidden;
+}
+
+.disclaimer-pending .page {
+  visibility: hidden;
+}
+
+.disclaimer {
+  width: min(520px, calc(100% - 2 * var(--style-tokens-spacing-s)));
+  max-height: calc(100dvh - 2 * var(--style-tokens-spacing-s));
+  padding: calc(2 * var(--style-tokens-spacing-s));
+  border: var(--style-tokens-stroke-weight) solid var(--style-tokens-ears-color);
+  border-radius: 0;
+  background: var(--primitives-ivory-500);
+  color: var(--style-tokens-text-color-default);
+  font-family: var(--typography-font-family-instrument-sans), Arial, sans-serif;
+}
+
+.disclaimer::backdrop {
+  background: var(--primitives-ivory-500);
+}
+
+.disclaimer-eyebrow {
+  margin: 0 0 var(--style-tokens-spacing-s);
+  font-size: var(--typography-font-size-xs);
+  letter-spacing: 0.12em;
+}
+
+.disclaimer h1 {
+  margin: 0 0 var(--style-tokens-spacing-xs);
+  font-size: var(--typography-font-size-m);
+  font-weight: var(--typography-font-weight-semibold);
+}
+
+#disclaimer-message {
+  margin: 0 0 calc(2 * var(--style-tokens-spacing-s));
+  font-size: var(--typography-font-size-xs);
+  line-height: 1.5;
+}
+
+.disclaimer-button {
+  width: 100%;
+  padding: var(--style-tokens-spacing-xs);
+  border: 0;
+  border-radius: 0;
+  background: var(--style-tokens-button-primary-default);
+  color: var(--style-tokens-button-text);
+  font-family: inherit;
+  font-size: var(--type-button-text-small-size);
+  font-weight: var(--type-button-text-small-weight);
+  cursor: pointer;
+}
+
+.disclaimer-button:hover {
+  background: var(--style-tokens-button-primary-hover);
+}
+
+.disclaimer-button:focus-visible {
+  outline: var(--style-tokens-stroke-weight) solid var(--style-tokens-text-color-default);
+  outline-offset: var(--style-tokens-spacing-xxxs);
+}
+
+.disclaimer-noscript {
+  padding: var(--style-tokens-spacing-s);
+}
+
+@media (max-width: 700px) {
+  .disclaimer {
+    padding: var(--style-tokens-spacing-s);
+  }
+}
