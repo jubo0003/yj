@@ -29,6 +29,8 @@
   --style-tokens-button-text: var(--primitives-ivory-500);
   /* Button/Primary_Hover | VariableID:375:3743 */
   --style-tokens-button-primary-hover: var(--primitives-darkbrown-400);
+  /* Button/Primary_Click | VariableID:757:3382 | Added from Figma 2026-10-19 */
+  --style-tokens-button-primary-click: var(--primitives-ivory-700);
   /* Spacing/XXS | VariableID:382:3934 */
   --style-tokens-spacing-xxs: 10px;
   /* Spacing/S | VariableID:382:3948 */

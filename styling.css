@@ -8,7 +8,7 @@
    Layout measurements and breakpoints below are not Figma variables.
 
    Sections: header, dropdown, image corners, hero, entry notice,
-   category carousel, about/craft/retailers, newsletter, footer.
+   category carousel, about/craft/retailers, newsletter, footer, button feedback.
 */
 
 /* ===== 1. Header ===== */
@@ -1216,4 +1216,14 @@ body.disclaimer-pending {
     width: 42px;
     height: 76px;
   }
+}
+
+/* ===== 10. Button click feedback ===== */
+
+/* Figma Button/Medium, state=clicked: keep the hover background and change
+   the text colour. :active also works while holding the Space key. */
+.disclaimer-button:enabled:active,
+.newsletter-form button:enabled:active {
+  background: var(--style-tokens-button-primary-hover);
+  color: var(--style-tokens-button-primary-click);
 }
