@@ -46,7 +46,13 @@
 
       <dialog id="navigation-menu" class="navigation-menu" aria-label="Main navigation">
         <div class="header navigation-header">
-          <button class="navigation-close" type="button" aria-label="Close menu" autofocus><img loading="lazy" src="images/menu-close.svg" alt="" /></button>
+          <button class="navigation-close" type="button" aria-label="Close menu" autofocus>
+            <!-- Figma's exported shapes stay inline so the hover variant can animate. -->
+            <svg class="close-icon" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M21.8909 22.5694L0.735689 1.41421L2.1499 0L23.3051 21.1552L21.8909 22.5694Z" fill="#201917"/>
+              <line x1="0.707078" y1="21.9804" x2="21.9202" y2="0.7673" stroke="#201917" stroke-width="2"/>
+            </svg>
+          </button>
           <a class="logo" href="index.html" aria-label="Yori Jomo home">
             <picture>
               <source media="(max-width: 700px)" srcset="images/logo-mobile.svg" />
@@ -193,8 +199,8 @@
             <h2 id="newsletter-title">JOIN OUR NEWSLETTER</h2>
             <p class="newsletter-intro">Sign up to our mailing list and get exclusive deals and early access to new products.</p>
             <form class="newsletter-form">
-              <label for="newsletter-email">E-mail address:</label>
-              <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Your mail here" required />
+              <label for="newsletter-email">e-mail address:</label>
+              <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="your mail here" required />
               <!-- Enabled by the demo handler; no email is sent or stored. -->
               <button type="submit" disabled>SIGN UP</button>
               <p class="newsletter-status" role="status" aria-live="polite"></p>
@@ -219,9 +225,12 @@
             <div class="social-icons">
               <a href="https://www.instagram.com/yorijomo/" target="_blank" rel="noopener noreferrer" aria-label="Yori Jomo on Instagram">
                 <img loading="lazy" src="images/instagram.svg" alt="" width="30" height="30" />
+                <img class="social-hover" src="images/instagram-hover.svg" alt="" width="30" height="30" />
               </a>
-              <!-- Figma does not yet provide a Facebook destination. -->
-              <span><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30" /></span>
+              <a href="https://www.facebook.com/yorijomo" target="_blank" rel="noopener noreferrer" aria-label="Yori Jomo on Facebook">
+                <img loading="lazy" src="images/facebook.svg" alt="" width="30" height="30" />
+                <img class="social-hover" src="images/facebook-hover.svg" alt="" width="30" height="30" />
+              </a>
             </div>
           </div>
         </section>
@@ -262,5 +271,6 @@
     <script src="disclaimer.js"></script>
     <script src="newsletter.js"></script>
     <script src="navigation.js"></script>
+    <script src="section-parallax.js"></script>
   </body>
 </html>

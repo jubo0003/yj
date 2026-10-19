@@ -184,7 +184,7 @@ body:has(.navigation-menu[open]) {
   height: 32px;
 }
 
-.navigation-close img {
+.navigation-close .close-icon {
   width: 23.5375px;
   height: 22.6729px;
   object-fit: contain;
@@ -282,7 +282,7 @@ body:has(.navigation-menu[open]) {
     height: 18px;
   }
 
-  .navigation-close img {
+  .navigation-close .close-icon {
     width: 16px;
     height: auto;
   }
@@ -774,6 +774,14 @@ body.disclaimer-pending {
   grid-template-rows: 120px 123px 237px minmax(130px, auto) 112px minmax(300px, auto);
   margin-top: 164px;
   padding-bottom: var(--style-tokens-spacing-m);
+}
+
+/* User-requested whole-section parallax; this offset is not a Figma token.
+   Text, photos and corners move together, preserving their original crops. */
+@media (prefers-reduced-motion: no-preference) {
+  .story {
+    transform: translateY(var(--section-drift, 0px));
+  }
 }
 
 .story-copy {
@@ -1390,4 +1398,80 @@ body.disclaimer-pending {
 .newsletter-form button:enabled:active {
   background: var(--style-tokens-button-primary-hover);
   color: var(--style-tokens-button-primary-click);
+}
+
+/* Figma component interactions: dropdown 300ms, icon variants 400ms. */
+.navigation-columns a {
+  color: var(--style-tokens-icons-color-default);
+}
+
+.social-icons a {
+  display: grid;
+}
+
+.social-icons a img {
+  grid-area: 1 / 1;
+}
+
+.social-hover {
+  opacity: 0;
+}
+
+.close-icon {
+  overflow: visible;
+}
+
+@media (hover: hover) {
+  .navigation-columns a:hover {
+    color: var(--primitives-earth-400);
+  }
+
+  .navigation-newsletter:hover .navigation-newsletter-copy {
+    color: var(--style-tokens-button-primary-hover);
+  }
+
+  .social-icons a:hover .social-hover {
+    opacity: 1;
+  }
+
+  /* Exact exported hover path, Figma node 909:18646. */
+  .navigation-close:hover .close-icon path {
+    d: path("M22.5694 23.2577L2.55562 3.57675L3.95809 2.15079L23.9718 21.8317L22.5694 23.2577Z");
+  }
+
+  .navigation-close:hover .close-icon line {
+    transform: translateY(-0.0601px);
+  }
+}
+
+.social-icons a:focus-visible .social-hover {
+  opacity: 1;
+}
+
+@keyframes navigation-open {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .navigation-menu[open],
+  .navigation-menu[open]::backdrop {
+    animation: navigation-open 300ms ease-out;
+  }
+
+  .close-icon path {
+    transition: d 400ms ease-out;
+  }
+
+  .close-icon line {
+    transition: transform 400ms ease-out;
+  }
+
+  .social-hover {
+    transition: opacity 400ms ease-out;
+  }
+
+  .navigation-newsletter-copy {
+    transition: color 300ms ease-out;
+  }
 }
