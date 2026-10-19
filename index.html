@@ -25,7 +25,10 @@
       <!-- Header: menu, centred logo, and shopping bag. -->
       <header class="header">
         <button class="menu" type="button" aria-label="Menu" aria-controls="navigation-menu" aria-expanded="false">
-          <img loading="lazy" class="header-icon" src="images/menu.svg" alt="" />
+          <svg class="header-icon menu-icon" aria-hidden="true" focusable="false" width="30" height="15" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M29.918 2H0V0H29.918V2Z" fill="#201917"/>
+<line y1="13.3633" x2="29.9998" y2="13.3633" stroke="#201917" stroke-width="2"/>
+</svg>
         </button>
         <a class="logo" href="index.html" aria-label="Yori Jomo home">
           <picture>
@@ -34,7 +37,9 @@
           </picture>
         </a>
         <button class="bag" type="button" aria-label="Shopping bag" disabled>
-          <img loading="lazy" class="header-icon" src="images/shopping-bag.svg" alt="" />
+          <svg class="header-icon bag-icon" aria-hidden="true" focusable="false" width="31" height="23" viewBox="0 0 31 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.2295 2.00098H21.2266V6.99023H30.0459V22.0312H0.0595703V6.99023H8.87793V2.00098H8.87598V0H21.2295V2.00098ZM2.05957 20.0312H28.0459V8.99023H2.05957V20.0312ZM10.9375 6.99023H19.168V2.00098H10.9375V6.99023Z" fill="#201917"/>
+            </svg>
         </button>
       </header>
 
@@ -48,7 +53,9 @@
             </picture>
           </a>
           <button class="bag" type="button" aria-label="Shopping bag" disabled>
-            <img loading="lazy" class="header-icon" src="images/shopping-bag.svg" alt="" />
+            <svg class="header-icon bag-icon" aria-hidden="true" focusable="false" width="31" height="23" viewBox="0 0 31 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.2295 2.00098H21.2266V6.99023H30.0459V22.0312H0.0595703V6.99023H8.87793V2.00098H8.87598V0H21.2295V2.00098ZM2.05957 20.0312H28.0459V8.99023H2.05957V20.0312ZM10.9375 6.99023H19.168V2.00098H10.9375V6.99023Z" fill="#201917"/>
+            </svg>
           </button>
         </div>
         <div class="navigation-content">
@@ -141,7 +148,8 @@
         <section id="about-us" class="story" aria-label="About Yori Jomo">
           <div class="story-copy story-about-copy">
             <h2>ABOUT US</h2>
-            <p>Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+            <p>Yori Jomo is a Copenhagen-based footwear brand, producing in Italy with a focus on craftsmanship, quality materials, and timeless design.</p>
+            <p>Founded with the idea of creating shoes that feel understated, refined, and easy to wear across seasons, Yori Jomo combines Scandinavian simplicity with traditional Italian shoemaking.</p>
           </div>
           <div class="story-photo story-about-photo image-frame image-frame--bottom-right">
             <picture>
@@ -150,8 +158,8 @@
             </picture>
           </div>
           <div class="story-copy story-craft-copy">
-            <h2>OUR CRAFT</h2>
-            <p>Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+            <p>The collections are designed for women who appreciate well-made products rather than fast trends — styles intended to last both aesthetically and in quality.</p>
+            <p>Produced in small quantities and handcrafted in Tuscany, Italy, developed with carefully selected Italian suppliers, each style reflects a balance between comfort, functionality, and quiet elegance.</p>
           </div>
           <div class="story-photo story-craft-photo image-frame image-frame--top-left">
             <picture>
@@ -161,9 +169,9 @@
           </div>
           <div id="retailers" class="story-copy story-retailers-copy">
             <h2>RETAILERS</h2>
-            <p>Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.</p>
+            <p>All our collaborators and handpicked. We are proud to work with each and every one of them.</p>
             <!-- Add the retailer page URL when it is available. -->
-            <span class="story-link">Locate a retailer near you</span>
+            <span class="story-link">locate a retailer near you</span>
           </div>
           <div class="story-photo story-retailers-photo image-frame image-frame--diagonal">
             <picture>
@@ -182,12 +190,12 @@
           </div>
           <div class="newsletter-content">
             <h2 id="newsletter-title">JOIN OUR NEWSLETTER</h2>
-            <p class="newsletter-intro">We send you all kinds of stuff and its very exclusive and nice and well made and also its italian, did i mention its italian, very nice good leather and very exclusive. good quality and go sending we send you stuff wow nice picture to the right.</p>
+            <p class="newsletter-intro">Sign up to our mailing list and get exclusive deals and early access to new products.</p>
             <form class="newsletter-form">
               <label for="newsletter-email">E-mail address:</label>
               <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Your mail here" required />
               <!-- Enabled by the demo handler; no email is sent or stored. -->
-              <button type="submit" disabled>sign up</button>
+              <button type="submit" disabled>SIGN UP</button>
               <p class="newsletter-status" role="status" aria-live="polite"></p>
               <noscript><p>Enable JavaScript to try this school-project demo form. No subscriptions are collected.</p></noscript>
             </form>
@@ -204,29 +212,36 @@
               <img src="images/newsletter-detail.webp" alt="Close-up of smooth and textured black leather" loading="lazy" />
             </picture>
           </div>
+          <div class="newsletter-socials">
+            <h2>FOLLOW OUR SOCIALS</h2>
+            <p>Keep up to date casually<br />with a single follow.</p>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/yorijomo/" target="_blank" rel="noopener noreferrer" aria-label="Yori Jomo on Instagram">
+                <img loading="lazy" src="images/instagram.svg" alt="" width="30" height="30" />
+              </a>
+              <!-- Figma does not yet provide a Facebook destination. -->
+              <span><img loading="lazy" src="images/facebook.svg" alt="Facebook" width="30" height="30" /></span>
+            </div>
+          </div>
         </section>
       </main>
 
       <footer id="contact" class="footer">
         <div class="footer-contact">
           <h2>CONTACT</h2>
-          <p>If you are interested in contacting us regarding something idk. then maybe you should think about just reaching out.. maybe just call, I mean our number is literally right here:</p>
+          <p>We are always exited to get in touch. If you are a retailer or a customer, we will always be dedicated to answer you in our the fullest extent.</p>
           <!-- Placeholder contact details reproduced from the school-project design. -->
           <dl>
-            <div><dt>TLF:</dt><dd>13243546</dd></div>
+            <div><dt>TLF:</dt><dd>+45 12 34 56 79</dd></div>
             <div><dt>MAIL:</dt><dd>something@mail.dk</dd></div>
           </dl>
         </div>
-        <nav class="footer-nav" aria-labelledby="footer-links-title">
-          <h2 id="footer-links-title">ALL LINKS</h2>
+        <nav class="footer-nav" aria-label="Footer navigation">
           <ul>
-            <li><a href="#shop">shop</a></li>
-            <li><a href="#newsletter">newsletter</a></li>
-            <li><a href="#about-us">about us</a></li>
-            <li><a href="#sandals">slags 1</a></li>
-            <li><a href="#accessories">slags 2</a></li>
-            <li><a href="#mary-janes">slags 3</a></li>
-            <li><a href="#ballerinas">slags 4</a></li>
+            <li><a href="#shop">SHOP</a></li>
+            <li><a href="#newsletter">NEWLETTER</a></li>
+            <li><a href="#about-us">ABOUT US</a></li>
+            <li><a href="#retailers">RETAILERS</a></li>
           </ul>
         </nav>
         <div class="footer-brand">
@@ -239,6 +254,7 @@
             <img loading="lazy" src="images/footer-emblem.svg" alt="" />
           </picture>
         </div>
+        <p class="footer-copyright">© 2026 Yori Jomo</p>
       </footer>
 
     </div>

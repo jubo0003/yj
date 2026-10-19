@@ -50,6 +50,44 @@
   height: auto;
 }
 
+/* Original Figma SVG shapes are inline so their parts can move.
+   Icon hover variants use Smart Animate, 400ms, ease-out. */
+.menu-icon {
+  overflow: visible;
+}
+
+.menu-icon path,
+.menu-icon line {
+  transition: transform 400ms ease-out;
+}
+
+.bag-icon path {
+  transition: d 400ms ease-out;
+}
+
+@media (hover: hover) {
+  .menu:hover .menu-icon path {
+    transform: translateX(-2.487159px);
+  }
+
+  .menu:hover .menu-icon line {
+    transform: translateX(2.81878px);
+  }
+
+  /* Exact path from the shopping-bag hover variant, node 808:17821. */
+  .bag:hover .bag-icon path {
+    d: path("M21.9053 2.00098H21.9023V6.99023H30.0869V22.0312H0.0595703V6.99023H8.24414V2.00098H8.24219V0.000976562H21.9053V2.00098ZM2.05957 20.0312H28.0869V8.99023H2.05957V20.0312ZM10.5215 6.99023H19.625V2.00098H10.5215V6.99023Z");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-icon path,
+  .menu-icon line,
+  .bag-icon path {
+    transition: none;
+  }
+}
+
 .logo {
   justify-self: center;
   display: block;
@@ -734,6 +772,10 @@ body.disclaimer-pending {
   text-underline-offset: 2px;
 }
 
+.story-craft-copy p + p {
+  margin-top: var(--typography-font-size-xs);
+}
+
 .story-photo {
   min-width: 0;
   align-self: start;
@@ -930,7 +972,8 @@ body.disclaimer-pending {
   aspect-ratio: 362 / 180;
 }
 
-.newsletter-content h2 {
+.newsletter-content h2,
+.newsletter-socials h2 {
   margin: 0 0 var(--style-tokens-spacing-xxs);
   font-size: var(--typography-font-size-m);
   font-weight: var(--typography-font-weight-semibold);
@@ -941,6 +984,45 @@ body.disclaimer-pending {
   margin: 0;
   font-size: var(--typography-font-size-xs);
   line-height: 1.25;
+  min-height: 79px;
+}
+
+.newsletter-socials {
+  grid-column: 11 / span 5;
+  grid-row: 4;
+  align-self: start;
+  min-width: 0;
+}
+
+.newsletter-socials p {
+  margin: 0 0 var(--style-tokens-spacing-xxs);
+  font-size: var(--typography-font-size-xs);
+  line-height: 1.25;
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--style-tokens-spacing-xxs);
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+@media (min-width: 701px) and (max-width: 1199px) {
+  .newsletter-socials {
+    grid-column: 2 / span 5;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 700px) {
+  .newsletter-socials {
+    grid-column: 2 / span 11;
+    grid-row: auto;
+  }
 }
 
 .newsletter-form {
@@ -1132,10 +1214,13 @@ body.disclaimer-pending {
 
 .footer-nav {
   grid-column: 20 / span 3;
-  grid-row: 3 / span 4;
+  grid-row: 2 / span 4;
+  margin-top: 177px;
 }
 
 .footer-nav ul {
+  display: grid;
+  gap: var(--style-tokens-spacing-xs);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1143,11 +1228,11 @@ body.disclaimer-pending {
 
 .footer-nav a {
   font-weight: var(--typography-font-weight-bold);
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .footer-nav a:hover {
-  text-decoration-thickness: 2px;
+  text-decoration: underline;
 }
 
 .footer-nav a:focus-visible {
@@ -1179,6 +1264,24 @@ body.disclaimer-pending {
 
 .footer-brand img {
   object-fit: contain;
+}
+
+.footer-copyright {
+  grid-column: 1 / -1;
+  grid-row: 7;
+  justify-self: center;
+  margin: 24px 0 0;
+}
+
+@media (max-width: 1199px) {
+  .footer-nav {
+    margin-top: 0;
+  }
+
+  .footer-copyright {
+    grid-row: auto;
+    margin: 0;
+  }
 }
 
 /* Tablet: readable contact and navigation columns with branding below. */

@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="FB logo">
+<path id="Rectangle 169" d="M1 1H29V29H1V1Z" stroke-width="2" stroke="#201917"/>
+<mask id="stroke0_0_217" maskUnits="userSpaceOnUse" x="7" y="2.5" width="17" height="27" fill="black">
+<rect fill="white" x="7" y="2.5" width="17" height="27"/>
+<path d="M12.75 17.1979V27.5H17.25V17.1979H20.75L21.25 13.125H17.25V10.7292C17.1866 8.86314 17.5091 8.32987 18.75 8.33335H21.5V4.97918C21.5 4.97918 21 4.50539 18.5 4.50002C16 4.49465 12.75 5.69586 12.75 8.81251V13.125H9V17.1979H12.75Z"/>
+</mask>
+<path id="Vector 5" d="M12.75 27.5V17.1979H9V13.125H12.75V8.81251C12.75 5.69586 16 4.49465 18.5 4.50002C21 4.50539 21.5 4.97918 21.5 4.97918V8.33335H18.75C17.5091 8.32987 17.1866 8.86314 17.25 10.7292V13.125H21.25L20.75 17.1979H17.25V27.5H12.75Z" stroke-width="4" stroke-linecap="square" stroke="#201917" mask="url(#stroke0_0_217)"/>
+</g>
+</svg>
