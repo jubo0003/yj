@@ -423,6 +423,34 @@ body:has(.navigation-menu[open]) {
   min-height: 0;
 }
 
+/* Fade in after the entry notice is dismissed. These timings are a
+   page animation choice, not exported Figma variables. */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.disclaimer-pending) .hero-card img {
+    animation-name: hero-fade-in;
+    animation-duration: 900ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+  }
+
+  .hero-shop img {
+    animation-delay: 150ms;
+  }
+
+  .hero-leather img {
+    animation-delay: 300ms;
+  }
+}
+
 .hero-card > * {
   grid-area: 1 / 1;
 }
