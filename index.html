@@ -12,13 +12,18 @@
     <link rel="stylesheet" href="styling.css" />
   </head>
   <body class="disclaimer-pending">
-    <!-- Visitors must acknowledge this notice before entering the page. -->
+    <!-- Visitors must enter the password and acknowledge this notice. -->
     <dialog class="disclaimer" aria-labelledby="disclaimer-title" aria-describedby="disclaimer-message">
       <p class="disclaimer-eyebrow">PLEASE NOTE</p>
       <h1 id="disclaimer-title">School project</h1>
       <p id="disclaimer-message">This is a school project and has no affiliation with the brand Yori Jomo</p>
       <form method="dialog">
-        <button class="disclaimer-button" type="submit" autofocus>I understand — enter site</button>
+        <p>
+          <label for="disclaimer-password">Password</label>
+          <input id="disclaimer-password" name="password" type="password" autocomplete="current-password" aria-describedby="disclaimer-error" required autofocus />
+        </p>
+        <p id="disclaimer-error" role="alert" hidden>Incorrect password. Please try again.</p>
+        <button class="disclaimer-button" type="submit">I understand — enter site</button>
       </form>
     </dialog>
     <noscript><p class="disclaimer-noscript">This is a school project and has no affiliation with the brand Yori Jomo. Please enable JavaScript to dismiss this notice and view the site.</p></noscript>

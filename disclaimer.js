@@ -1,6 +1,27 @@
-// Remember acknowledgement for this tab’s session, including page refreshes.
-const disclaimerStorageKey = "yori-jomo-disclaimer-acknowledged";
+// Simple browser-only gate, not secure access control.
+// Remember successful entry for this tab, including page refreshes.
+const disclaimerStorageKey = "yori-jomo-disclaimer-password-v1";
 const disclaimer = document.querySelector(".disclaimer");
+const passwordInput = document.querySelector("#disclaimer-password");
+const passwordError = document.querySelector("#disclaimer-error");
+
+disclaimer.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (passwordInput.value !== "ekek") {
+    passwordError.hidden = false;
+    passwordInput.setAttribute("aria-invalid", "true");
+    passwordInput.focus();
+    passwordInput.select();
+    return;
+  }
+  passwordInput.value = "";
+  disclaimer.close();
+});
+
+passwordInput.addEventListener("input", () => {
+  passwordError.hidden = true;
+  passwordInput.removeAttribute("aria-invalid");
+});
 
 disclaimer.addEventListener("cancel", (event) => {
   // Require the acknowledgement button instead of Escape.
@@ -17,11 +38,15 @@ disclaimer.addEventListener("close", () => {
   document.querySelector(".logo").focus({ preventScroll: true });
 });
 
-// This dialog has one control; keep Tab and Shift+Tab on that button.
+// Keep keyboard focus between the password field and entry button.
 disclaimer.addEventListener("keydown", (event) => {
-  if (event.key === "Tab") {
+  const button = disclaimer.querySelector("button");
+  if (event.key === "Tab" && event.shiftKey && document.activeElement === passwordInput) {
     event.preventDefault();
-    disclaimer.querySelector("button").focus();
+    button.focus();
+  } else if (event.key === "Tab" && !event.shiftKey && document.activeElement === button) {
+    event.preventDefault();
+    passwordInput.focus();
   }
 });
 
